@@ -16,14 +16,6 @@ public class Configuration {
         components.add(newComponent);
     }
 
-    public double calculateTotalPrice() {
-        double total = 0;
-        for (Component c : components) {
-            total += c.getPrice();
-        }
-        return total;
-    }
-
     public void validateBuild() {
         String cpuSocket = "";
         String mbSocket = "";
