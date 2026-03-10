@@ -9,7 +9,7 @@ public class Main {
 
         System.out.print("Введіть ПІБ замовника: ");
         String name = scanner.nextLine();
-        Configuration myPC = new Configuration(new Customer(name));
+        Build myBuild = new Build(new Customer(name));
 
         boolean running = true;
         while (running) {
@@ -40,11 +40,16 @@ public class Main {
                         System.out.print("Сокет: ");
                         String sock = scanner.nextLine();
 
-                        myPC.addComponent(n, cat, pr, pwr, sock);
-                        System.out.println("Деталь додано");
+                        try {
+                            myBuild.addComponent(n, cat, pr, pwr, sock);
+                            System.out.println(" Деталь додано");
+                        } catch (IllegalArgumentException e ){
+                            System.out.println(" Невідома категорія");
+                        }
                     }
                     case 2 -> {
-                        myPC.validateBuild();
+                        String report = myBuild.generateReport();
+                        System.out.println(report);
                     }
                     case 0 -> {
                         running = false;

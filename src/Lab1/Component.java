@@ -1,23 +1,20 @@
 package Lab1;
-
+//Done написати ще один клас component generator ,убрати сокет та додати тут тип(категорію)
 public class Component {
     private String name;
-    private String category;
+    private Category category;
     private double price;
     private int power;
-    private String socket;
 
-    public Component(String name, String category, double price, int power, String socket) {
+    public Component(String name, Category category, double price, int power) {
         this.name = name;
         this.category = category;
         this.price = price;
         this.power = power;
-        this.socket = socket;
     }
 
     public String getName() { return name; }
-    public String getCategory() { return category; }
+    public Category getCategory() { return category; }
     public double getPrice() { return price; }
     public int getPower() { return power; }
-    public String getSocket() { return socket; }
 }
