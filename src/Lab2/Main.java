@@ -1,8 +1,5 @@
 package Lab2;
 
-import Lab1.Build;
-import Lab1.Customer;
-
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -12,7 +9,14 @@ public class Main {
 
         System.out.print("Введіть ПІБ замовника: ");
         String name = scanner.nextLine();
-        Lab1.Build myBuild = new Build(new Customer(name));
+
+        BuildController controller;
+        try {
+            controller = new BuildController(name);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Помилка: " + e.getMessage());
+            return;
+        }
 
         boolean running = true;
         while (running) {
@@ -30,7 +34,7 @@ public class Main {
                         System.out.print("Назва: ");
                         String n = scanner.nextLine();
 
-                        System.out.print("Категорія (CPU, Motherboard, PSU, RAM, Other): ");
+                        System.out.print("Категорія (CPU, MOTHERBOARD, PSU, RAM, OTHER): ");
                         String cat = scanner.nextLine();
 
                         System.out.print("Ціна: ");
@@ -44,19 +48,17 @@ public class Main {
                         String sock = scanner.nextLine();
 
                         try {
-                            myBuild.addComponent(n, cat, pr, pwr, sock);
+                            controller.addComponent(n, cat, pr, pwr, sock);
                             System.out.println(" Деталь додано");
-                        } catch (IllegalArgumentException e ){
-                            System.out.println(" Невідома категорія");
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Помилка валідації: " + e.getMessage());
                         }
                     }
                     case 2 -> {
-                        String report = myBuild.generateReport();
+                        String report = controller.validateBuildAndGetReport();
                         System.out.println(report);
                     }
-                    case 0 -> {
-                        running = false;
-                    }
+                    case 0 -> running = false;
                     default -> System.out.println("Невірний варіант");
                 }
             } catch (InputMismatchException e) {

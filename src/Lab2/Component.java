@@ -1,5 +1,4 @@
 package Lab2;
-//Done написати ще один клас component generator ,убрати сокет та додати тут тип(категорію)
 public class Component {
     private String name;
     private Category category;

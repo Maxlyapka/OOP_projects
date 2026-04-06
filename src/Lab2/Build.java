@@ -2,9 +2,7 @@ package Lab2;
 
 import java.util.ArrayList;
 import java.util.List;
-//Done  розділити логіки виводу від логіку самої аплікації
-//Done перейменувати на build , відділити створення компонентів
-//Done написати конструктор щоб зміг додавати компоненти
+
 public class Build {
     private Customer customer;
     private List<Component> components = new ArrayList<>();
@@ -19,7 +17,7 @@ public class Build {
     }
     public String generateReport() {
         StringBuilder report = new StringBuilder();
-        report.append("\n--- Збірка клієнта: ").append(customer.getFullName()).append(" ---\n");
+        report.append("\n--- Збірка замовника: ").append(customer.getFullName()).append(" ---\n");
 
         String cpuSocket = "";
         String mbSocket = "";
