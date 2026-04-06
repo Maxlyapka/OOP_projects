@@ -1,10 +1,10 @@
-package Lab1;
+package Lab2;
 
 import java.util.ArrayList;
 import java.util.List;
-//Done розділити логіки виводу від логіки самої аплікації
-//Done перейменувати на build, відділити створення компонентів
-//Done написати конструктор, щоб зміг додавати компоненти
+//Done  розділити логіки виводу від логіку самої аплікації
+//Done перейменувати на build , відділити створення компонентів
+//Done написати конструктор щоб зміг додавати компоненти
 public class Build {
     private Customer customer;
     private List<Component> components = new ArrayList<>();
@@ -33,9 +33,9 @@ public class Build {
             String socketInfo = " | Немає сокету";
 
             if (c instanceof Processor) {
-            Processor p = (Processor) c;
-            cpuSocket = p.getSocket();
-            socketInfo = " | Сокет: " + p.getSocket();
+                Processor p = (Processor) c;
+                cpuSocket = p.getSocket();
+                socketInfo = " | Сокет: " + p.getSocket();
             } else if (c instanceof Motherboard){
                 Motherboard m = (Motherboard) c;
                 mbSocket = m.getSocket();
