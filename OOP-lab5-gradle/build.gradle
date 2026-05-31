@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+}
+
+import ua.chdtu.plugins.EnvValidatorPlugin
+
+apply plugin: EnvValidatorPlugin
+
+group = 'ua.edu.chdtu.oop'
+version = '1.0'
+
+envRequirements {
+    minJavaVersion = "25"
+    minMemoryMb = 128
+    requiredOS = "Mac OS X"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'Lab3.Main'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

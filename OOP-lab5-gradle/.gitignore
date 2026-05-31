@@ -1,0 +1,11 @@
+.gradle/
+build/
+buildSrc/build/
+buildSrc/.gradle/
+
+.idea/
+*.iml
+*.iws
+out/
+
+.DS_Store
